@@ -22,7 +22,8 @@
 }
 
 #next-letter {
-  font-size: 38px;  
+  font-size: 38px; 
+  
 }
 
 .keys-row {
@@ -31,7 +32,7 @@
 }
 
 #words-typed {
-  font-size: 20px;
+  font-size: 40px;
 }
 .glyphicon-ok {
   color: #1DA237
@@ -41,3 +42,6 @@
   color : #CD2626
 }
 
+.right {
+    background-color: yellow;
+}
