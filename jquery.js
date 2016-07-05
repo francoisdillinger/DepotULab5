@@ -37,12 +37,14 @@
      // Similar process as above, I had to use an if/else statement because certain symbols didn't convert under String.fromCharCode. I could have fixed this by editing the HTML but wasn't sure if we were allowed to for this lab. I may do it in the future. Once the key is pressed its converted into a string and the # is added to it. Since it then matches the class used in the HTML the corresponding key is highlighted on the virtual keyboard. 
       
             $(document).keypress(function(grr) {
-                if ([96,61,45,32,91,92,93,59,39,44,46,47,60,63,62,58,34,123,125,124,43,95,41,40,42,38,94,37,36,35,64,33,126].includes(grr.which)) {
-                $('#' + grr.which).addClass('right');
-                }
-                else {  
-                $('#' + String.fromCharCode(grr.which)).addClass('right');
-                }
+                var theKey = '#' + grr.keyCode;
+                $(theKey).addClass('right');
+                // if ([96,61,45,32,91,92,93,59,39,44,46,47,60,63,62,58,34,123,125,124,43,95,41,40,42,38,94,37,36,35,64,33,126].includes(grr.which)) {
+                // $('#' + grr.which).addClass('right');
+                // }
+                // else {  
+                // $('#' + String.fromCharCode(grr.which)).addClass('right');
+                // }
             });
             
       // Similar to the SHIFT, upon keyup it removes the #right class, which then removes the highlight that the key recieves once its pressed down.       
