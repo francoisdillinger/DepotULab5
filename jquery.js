@@ -12,7 +12,10 @@
                                 'oat itain oat tain nate eate tea anne inant nean',
                                  'itant eate anot eat nato inate eat anot tain eat', 
                                 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
-                                
+            var correct = 0;
+            var wrong = 0;
+            // var endingMessage = 'Congrats! You got ' + correct + ' correct and ' + wrong + ' wrong. Would you like to play again?';
+                              
    // Posting the first sentence to the top of the screen. 
                
             $('#words').text(sentences[0]);   
@@ -34,17 +37,48 @@
                 }
             });
             
-     // Similar process as above, I had to use an if/else statement because certain symbols didn't convert under String.fromCharCode. I could have fixed this by editing the HTML but wasn't sure if we were allowed to for this lab. I may do it in the future. Once the key is pressed its converted into a string and the # is added to it. Since it then matches the class used in the HTML the corresponding key is highlighted on the virtual keyboard. 
+     
       
             $(document).keypress(function(grr) {
                 var theKey = '#' + grr.keyCode;
+                var theLetter = String.fromCharCode(grr.keyCode);
                 $(theKey).addClass('right');
-                // if ([96,61,45,32,91,92,93,59,39,44,46,47,60,63,62,58,34,123,125,124,43,95,41,40,42,38,94,37,36,35,64,33,126].includes(grr.which)) {
-                // $('#' + grr.which).addClass('right');
-                // }
-                // else {  
-                // $('#' + String.fromCharCode(grr.which)).addClass('right');
-                // }
+                // console.log(grr.keyCode);
+                        
+                        console.log(sentences.length);
+                    if(sentences.length >= 1){
+                        if(sentences[0].length){
+                            var singleLetter = sentences[0].slice(0,1);
+                            // console.log(theSentence);
+                            var theSentence = sentences.shift();
+                            var newSentence = theSentence.substring(1);
+                            // theSentence = theSentence.substring(1);
+                            sentences.unshift(newSentence);
+                            // console.log(theLetter);
+                            // console.log(singleLetter);
+                            if(theLetter === singleLetter){
+                                console.log('Match!');
+                                correct = correct + 1;
+                                console.log(correct);
+                            }
+                            else{
+                                console.log('Wrong');
+                                wrong = wrong + 1;
+                                console.log(wrong);
+                            }
+                            console.log(sentences.length);
+                        }
+                        else{
+                                console.log('Im shifting!');
+                                sentences.shift();
+                        }
+                    }
+                    else{
+                        var endingMessage = 'Congrats! You got ' + correct + ' correct and ' + wrong + ' wrong. Would you like to play again?';
+                        alert(endingMessage);
+                        console.log(endingMessage);
+                    }
+                    console.log(sentences);
             });
             
       // Similar to the SHIFT, upon keyup it removes the #right class, which then removes the highlight that the key recieves once its pressed down.       
