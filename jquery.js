@@ -1,5 +1,3 @@
-   
-   
    // Making sure the document is ready. Console log to let me know its finished, 
    // it will hide the upper keyboard upon loading.
    
